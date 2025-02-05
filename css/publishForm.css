@@ -1,0 +1,200 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #3b82f6;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --text-color: #334155;
+    --border-color: #cbd5e1;
+    --error-color: #ef4444;
+    --success-color: #22c55e;
+}
+
+.publish-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--light);
+}
+
+.publish-wrapper {
+    background-color: var(--dark);
+    color: var(--light);
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.publish-wrapper h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.publish-wrapper h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--light);
+}
+
+.publish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-section {
+    background-color: var(--dark);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 5px var(--primary);
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--light);
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.course-upload-btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.course-upload-btn:hover {
+    background-color: var(--secondary);
+}
+
+.file-hint {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.upload-progress {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    background-color: var(--light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--success-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+}
+
+.btn-secondary {
+    background-color: var(--light);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
