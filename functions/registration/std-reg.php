@@ -1,9 +1,13 @@
 
 <?php
 
+    require "./functions/env.php";
+
     if (!isset($_POST['submit'])) {
         echo "Submit button not pressed.";
     } else {
+
+        $url = $SELF_API_BASE_URL . "registration.php";
 
         try{
 
@@ -15,7 +19,7 @@
     
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'http://localhost/eduwebbackend/registration.php',
+                CURLOPT_URL => $url,
                 CURLOPT_POST => true,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => $encoded

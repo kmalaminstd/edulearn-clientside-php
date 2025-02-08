@@ -32,6 +32,7 @@
                                 <option value='' disabled selected>Select category</option>
                                 <?php
 
+
                                 // print_r($category);
                                     foreach($category as $data){
 

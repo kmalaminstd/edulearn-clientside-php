@@ -23,6 +23,10 @@
                 <div class="filter-options">
                     <?php
 
+                        if(!$category){
+                            exit();
+                        }
+
                         foreach($category as $elm){
                             echo "<label><input type='checkbox'> {$elm->category_name} </label>";
                         }

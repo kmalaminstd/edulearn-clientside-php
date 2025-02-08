@@ -18,6 +18,12 @@
             <div class="courses-grid">
                 <!-- Free Course Card -->
                  <?php
+
+                    if(!$data || $data->data){
+                        echo "<h4>There is not data</h4>";
+                        exit;
+                    }
+
                     foreach($data->data as $elm){
 
                         $dateString = new DateTime($elm->publish_time);

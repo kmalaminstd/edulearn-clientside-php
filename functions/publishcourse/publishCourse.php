@@ -1,5 +1,7 @@
 <?php
 
+    require "./functions/env.php";
+
     if(session_status() == PHP_SESSION_NONE){
         session_name("eduwebclientui_session");
         session_start();
@@ -36,11 +38,13 @@
 
         // sending data through api
 
+        $url = $SELF_API_BASE_URL . "publish-course.php";
+
         try{
 
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'http://localhost/eduwebbackend/publish-course.php',
+                CURLOPT_URL => $url,
                 CURLOPT_POST => true,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => $postData,

@@ -1,5 +1,7 @@
 <?php
 
+    require "./functions/env.php";
+
     if(session_status() === PHP_SESSION_NONE){
         session_name("eduwebclientui_session");
         session_start();
@@ -7,11 +9,13 @@
 
     $data;
 
+    $url = $SELF_API_BASE_URL . "mycourse-list.php";
+
     try{
 
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => 'http://localhost/eduwebbackend/mycourse-list.php',
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 'Authorization: ' . $_SESSION['token'],

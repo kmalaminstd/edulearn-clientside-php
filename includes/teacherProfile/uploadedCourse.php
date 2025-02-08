@@ -13,6 +13,11 @@
 
                     <?php
 
+                        if(!$data || $data['data']){
+                            echo "<h4>There is not data</h4>";
+                            exit;
+                        }
+
                         foreach($data['data']['data'] as $elm){
 
                             echo "

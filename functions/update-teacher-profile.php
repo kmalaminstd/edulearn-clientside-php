@@ -1,5 +1,7 @@
 <?php
 
+    require "./functions/env.php";
+
     session_name("eduwebclientui_session");
     session_start();
 
@@ -19,10 +21,12 @@
                 'image' => $image
             ];
 
+            $url = $SELF_API_BASE_URL . "update-profile.php";
+
             try {
                 $curl = curl_init();
                 curl_setopt_array($curl, [
-                    CURLOPT_URL => 'http://localhost/eduwebbackend/update-profile.php',
+                    CURLOPT_URL => $url,
                     CURLOPT_POST => true,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_POSTFIELDS => json_encode($encoded), // Send as multipart

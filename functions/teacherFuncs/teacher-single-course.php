@@ -1,11 +1,13 @@
 <?php
 
+    require "./functions/env.php";
+
     if(session_status() === PHP_SESSION_NONE){
         session_name("eduwebclientui_session");
         session_start();
     }
 
-    $baseUrl = 'http://localhost/eduwebbackend/teacher-single-course-view.php?';
+    $baseUrl = $SELF_API_BASE_URL . 'teacher-single-course-view.php?';
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $tid = isset($_GET['tid']) ? $_GET['tid'] : null;

@@ -1,11 +1,6 @@
 <?php
 
-    // session_name("eduwebclientui_session");
-    // session_start();
-
-    // if(session_status() === PHP_SESSION_NONE){
-        
-    // }
+    require "./functions/env.php";
 
     $username = '';
     $email = '';
@@ -14,6 +9,7 @@
     $role_id = '';
     $image_link = '';
 
+    $url = $SELF_API_BASE_URL . "user-info.php";
 
     try{
 
@@ -23,7 +19,7 @@
 
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => 'http://localhost/eduwebbackend/user-info.php',
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 'Authorization: Bearer ' . $_SESSION['token'],

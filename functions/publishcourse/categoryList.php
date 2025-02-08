@@ -1,14 +1,28 @@
 <?php
 
-    $curl = curl_init();
-    curl_setopt_array($curl, [
-        CURLOPT_URL => 'http://localhost/eduwebbackend/all-category.php',
-        CURLOPT_RETURNTRANSFER => true
-    ]);
+    require "./functions/env.php";
 
-    $resp = curl_exec($curl);
-    $decoded = json_decode($resp);
+    $url = $SELF_API_BASE_URL . "all-category.php";
 
-    $category = $decoded->data->data;
+    try{
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        ]);
+
+        $resp = curl_exec($curl);
+        $decoded = json_decode($resp);
+
+        $category = $decoded->data->data;
+
+        curl_close($curl);
+
+    }catch(Exception $e){
+        echo $e;
+    }
+
+    
 
 ?>

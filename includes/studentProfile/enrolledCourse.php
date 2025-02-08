@@ -14,6 +14,11 @@
 
                     <?php
 
+                    if(!$data || !$data['data']){
+                        echo "<h4>No Data </h4>";
+                        exit;
+                    }
+
                     foreach($data['data'] as $elm){
 
                         $datetime = new DateTime($elm['enrollment_date']);
