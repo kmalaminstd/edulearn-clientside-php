@@ -19,7 +19,7 @@
                 <!-- Free Course Card -->
                  <?php
 
-                    if(!$data || $data->data){
+                    if(!$data || !$data->data){
                         echo "<h4>There is not data</h4>";
                         exit;
                     }

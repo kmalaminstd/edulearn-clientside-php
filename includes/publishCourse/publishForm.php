@@ -34,7 +34,7 @@
 
 
                                 // print_r($category);
-                                    foreach($category as $data){
+                                    foreach($categoryList as $data){
 
                                         echo "
                                         <option value='{$data->category_name}'>{$data->category_name}</option>

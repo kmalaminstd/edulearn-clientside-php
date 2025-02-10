@@ -1,6 +1,8 @@
 <?php
 
     require './functions/teacher_courses.php';
+    
+
 
     // print_r($data['data']['data']);
 
@@ -13,7 +15,7 @@
 
                     <?php
 
-                        if(!$data || $data['data']){
+                        if(!$data || !$data['data']){
                             echo "<h4>There is not data</h4>";
                             exit;
                         }
@@ -41,12 +43,16 @@
                                             <a class='action-btn view' href='./my-course-info.php?id=".$elm['id']. "&tid=" .$_SESSION['user_id'] ."'>
                                                 <i class='fas fa-eye'></i> View
                                             </a>
-                                            <button class='action-btn edit'>
+
+                                            <a class='action-btn edit' href='./edit-course.php?id=".$elm['id']. "&tid=" .$_SESSION['user_id'] ."'>
                                                 <i class='fas fa-edit'></i> Edit
-                                            </button>
-                                            <button class='action-btn delete'>
-                                                <i class='fas fa-trash'></i> Delete
-                                            </button>
+                                            </a>
+                                            <form method='DELETE' class='action-btn delete' action='./functions/courses/deleteMyCourse.php'>
+                                                <input name='course-id' value='". $elm['id'] ."' hidden/>
+                                                <button name='delete-my-course'>
+                                                    <i class='fas fa-trash'></i> Delete
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

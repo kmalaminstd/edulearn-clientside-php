@@ -1,13 +1,16 @@
 <?php
-   
-   if(session_status() === PHP_SESSION_NONE){
+
+
+    if(session_status() === PHP_SESSION_NONE){
         session_name("eduwebclientui_session");
         session_start();
     }
 
-    if(isset($_POST['course_enroll_btn'])){
+    require "./functions/env.php"; 
 
-        
+    $url = $SELF_API_BASE_URL . "enroll-course.php"; 
+
+    if(isset($_POST['course_enroll_btn'])){
 
         try{
             
@@ -21,7 +24,7 @@
     
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'http://localhost/eduwebbackend/enroll-course.php',
+                CURLOPT_URL => $url,
                 CURLOPT_POST => true,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => ['course_id' => $course_id], 

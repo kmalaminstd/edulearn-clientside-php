@@ -1,6 +1,6 @@
 <?php
 
-    require "./functions/env.php";
+    require __DIR__ . "/../env.php";
 
     if(session_status() == PHP_SESSION_NONE){
         session_name("eduwebclientui_session");
@@ -58,13 +58,13 @@
             $resp = curl_exec($curl);
             $decoded = json_decode($resp, true);
             // print_r($decoded);
-            header('Location: ../index.php');
+            header('Location: ../../index.php');
     
             curl_close($curl);   
             
         }catch(Exception $e){
             // print_r($e);
-            header('Location: ./publish-course.php');
+            header('Location: ../../publish-course.php');
         }
 
     }else{

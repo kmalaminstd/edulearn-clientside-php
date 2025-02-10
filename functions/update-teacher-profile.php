@@ -1,6 +1,6 @@
 <?php
 
-    require "./functions/env.php";
+    require __DIR__ . "/env.php";
 
     session_name("eduwebclientui_session");
     session_start();
@@ -39,13 +39,14 @@
                 $resp = curl_exec($curl);
                 $decoded = json_decode($resp, true);
 
-                print_r($resp);
+                // print_r($resp);
 
                 header('Location: ../index.php');
 
                 curl_close($curl);
 
             } catch (Exception $e) {
+                header('Location: ../index.php');
                 echo 'Exception: ' . $e->getMessage();
             }
         
