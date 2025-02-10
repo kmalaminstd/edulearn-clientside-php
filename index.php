@@ -6,7 +6,7 @@
     if(isset($_SESSION['token'])){
         $token = $_SESSION['token'];
         if($_SESSION['role'] == 'student'){
-            header('Location: ./courses.php');
+            header('Location: ./courses.php?page=1');
         }
         if($_SESSION['role'] == 'teacher'){
             header('Location: ./teacher-profile.php');

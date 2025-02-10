@@ -23,12 +23,12 @@
                 <div class="filter-options">
                     <?php
 
-                        if(!$category){
+                        if(!$catList){
                             exit();
                         }
 
-                        foreach($category as $elm){
-                            echo "<label><input type='checkbox'> {$elm->category_name} </label>";
+                        foreach($catList['data'] as $elm){
+                            echo "<label><input type='checkbox'> {$elm['category_name']} </label>";
                         }
 
                     ?>

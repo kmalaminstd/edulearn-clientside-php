@@ -34,10 +34,10 @@
 
 
                                 // print_r($category);
-                                    foreach($categoryList as $data){
+                                    foreach($catList['data'] as $data){
 
                                         echo "
-                                        <option value='{$data->category_name}'>{$data->category_name}</option>
+                                        <option value='{$data['category_name']}'>{$data['category_name']}</option>
                                         ";
                                     }
                                 ?>

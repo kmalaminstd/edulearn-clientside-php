@@ -2,6 +2,8 @@
 
     require './functions/courses/userShowedCourse.php';
 
+    $total_number_of_course;
+
 ?>
 
 <main class="courses-content">
@@ -19,33 +21,35 @@
                 <!-- Free Course Card -->
                  <?php
 
-                    if(!$data || !$data->data){
+                    if(!$data || !$data['data']){
                         echo "<h4>There is not data</h4>";
                         exit;
                     }
 
-                    foreach($data->data as $elm){
+                    foreach($data['data'] as $elm){
 
-                        $dateString = new DateTime($elm->publish_time);
+                        $dateString = new DateTime($elm['publish_time']);
+
+                        $total_number_of_course = $elm['total_course'];
 
                         echo "
                         
                             <div class='course-card'>
                                 <div class='course-thumbnail'>
-                                    <img src='{$elm->thumbnail_url}'>
+                                    <img src='{$elm['thumbnail_url']}'>
                                     
-                                    <span class='course-badge free'> <del>$ {$elm->price}</del>  </span>
+                                    <span class='course-badge free'> <del>$ {$elm['price']}</del>  </span>
                                     
                                 </div>
                                 <div class='course-content'>
-                                    <h3>{$elm->title}</h3>
-                                    <p class='instructor'>By {$elm->username}</p>
+                                    <h3>{$elm['title']}</h3>
+                                    <p class='instructor'>By {$elm['username']}</p>
                                     <div class='course-meta'>
                                         <span><i class='fas fa-user'></i> 12k students</span>
                                     </div>
                                     <p class='course-published-date'>Published : {$dateString->format('M d, Y')}</p>
                                     <form method='POST' action='./functions/courses/courseEnroll.php'>
-                                        <input name='course_id' value='{$elm->course_id}' hidden>
+                                        <input name='course_id' value='{$elm['course_id']}' hidden>
                                         <button name='course_enroll_btn'  type='submit' class='enroll-btn'>Enroll Now</button>
                                     </form>
                                 </div>
@@ -76,21 +80,57 @@
                 
             </div>
 
+            <?php
+
+                $frn = ceil($total_number_of_course / 10); 
+
+                $page_number = isset($_GET['page']) ? $_GET['page'] : 1;   
+
+                $i = 1;
+
+            ?>
+            
+
             <div class="cl-pagination">
-                <button class="cl-page-btn cl-prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="cl-page-numbers">
-                    <button class="cl-page-btn cl-active">1</button>
-                    <button class="cl-page-btn">2</button>
-                    <button class="cl-page-btn">3</button>
-                    <span class="cl-dots">...</span>
-                    <button class="cl-page-btn">10</button>
+                
+                    <?php
+                        echo
+                        " 
+                          <a href='?page=" . ($i == 1 ? $i=1 : "?page=" . ($i - 1)) . "' class='cl-page-btn cl-prev'>
+                            <i class=\"fas fa-chevron-left\"></i>
+                          </a>
+                        ";
+                    ?>
+                    
+               
+                <div class='cl-page-numbers'>
+
+                    <?php
+                        while($i < $frn+1){
+
+                            echo "<a href='?page=". $i ."' class='cl-page-btn " . ($page_number == $i ? "cl-active" : "") . "'>$i</a>";
+
+                            $i++;
+                        }
+                        
+                    ?>
+                    
+
                 </div>
-                <button class="cl-page-btn cl-next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <?php
+
+                echo "
+                    <a href='" . ($page_number == $frn ? "?page=" . $frn : "?page=" .($page_number+1)) . " ' class='cl-page-btn cl-next'>
+                        <i class=\"fas fa-chevron-right\"></i>
+                    </a>
+                ";
+
+                ?>
+                
             </div>
+
+            
+            
         </main>
         
     </div>
