@@ -7,9 +7,11 @@
         $token = $_SESSION['token'];
         if($_SESSION['role'] == 'student'){
             header('Location: ./courses.php?page=1');
+            exit;
         }
         if($_SESSION['role'] == 'teacher'){
             header('Location: ./teacher-profile.php');
+            exit;
         }
     }
 

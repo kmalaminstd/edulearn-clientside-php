@@ -1,7 +1,7 @@
 
 <?php
 
-    require "./functions/env.php";
+    require "../../functions/env.php";
 
     if (!isset($_POST['submit'])) {
         echo "Submit button not pressed.";

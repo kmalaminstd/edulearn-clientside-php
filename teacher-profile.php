@@ -1,12 +1,15 @@
 <?php
 
-    session_name("eduwebclientui_session");
-    session_start();
+    if(session_status() === PHP_SESSION_NONE){
+        session_name("eduwebclientui_session");
+        session_start();
+    }
 
     // echo $_SESSION['role'];
 
     if(!isset($_SESSION['token']) && $_SESSION['role'] !== 'teacher'){
         header('Location: ./login.php');
+        exit;
     }
 
 

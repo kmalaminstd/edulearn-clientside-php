@@ -3,11 +3,22 @@
     session_name("eduwebclientui_session");
     session_start();
 
-    if(!isset($_POST['submit'])){
+    // print_r($_SESSION);
 
-        header('./login.php');
+    if(isset($_SESSION['token']) && isset($_SESSION['role'])){
+        if($_SESSION['role'] === 'teacher'){
+            header('Location: ./teacher-profile.php');
+            exit;
+        }
+        
+        if($_SESSION['role'] === 'student'){
+            header('Location: ./student-profile.php');
+            exit;
+        }
+    }
 
-    }else{
+    if(isset($_POST['submit'])){
+
         $email = filter_input(INPUT_POST, 'email' , FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $encoded = json_encode(['email' => $email, 'password' => $password]); 
@@ -25,8 +36,6 @@
             $resp = curl_exec($curl);
             $decoded = json_decode($resp, true);
 
-            
-
             $id = isset($decoded['data']['user_id']) ? $decoded['data']['user_id'] : null;
             $token = isset($decoded['data']['token']) ? $decoded['data']['token'] : null;
             $username = isset($decoded['data']['username']) ? $decoded['data']['username'] : null;
@@ -39,8 +48,9 @@
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
 
-            if(!$id && !$token && !$username && !$email && !$role){
-                header('./login.php');
+            if(!$id || !$token || !$username || !$email || !$role){
+                echo 'Invalid login crediential';
+                exit;
             }
             
             // print_r($_SESSION);
@@ -49,10 +59,12 @@
 
             if($role == 'student'){
                 header('Location: ./courses.php');
+                exit;
             }
 
             if($role == 'teacher'){
                 header('Location: ./teacher-profile.php');
+                exit;
             }
 
             curl_close($curl);
@@ -62,9 +74,11 @@
 
         }catch(Exception $e){
             // echo $e;
-            // echo $e;
-            header('./login.php');
+            echo $e;
+            // header('Location: ./login.php');
+            exit;
         }
+
     }
 
 

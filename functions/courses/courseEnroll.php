@@ -6,7 +6,7 @@
         session_start();
     }
 
-    require "./functions/env.php"; 
+    require "../../functions/env.php"; 
 
     $url = $SELF_API_BASE_URL . "enroll-course.php"; 
 
@@ -38,7 +38,7 @@
             $resp = curl_exec($curl);
             $decoded = json_decode($resp, true);
 
-            var_dump($decoded);
+            print_r($resp);
 
             curl_close($curl);
 
