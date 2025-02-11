@@ -6,16 +6,34 @@
     //     print_r($elm->category_name);
     // }
 
+    // echo $_SERVER['PHP_SELF'];
+
+    if(isset($_POST['searchText'])){
+        $courseText = $_POST['searchText'];
+        header("Location: ./search-course.php?page=1&courseText=" . $courseText);
+        exit;
+    }
+
 ?>
 
 
+<?php
+    
+    
+
+?>
+
 <div class="courses-container">
         <aside class="filters-sidebar">
+
             <div class="search-box">
-                <input type="text" placeholder="Search courses...">
-                <span class="c-search-icon">
-                    <i class="fas fa-search"></i>
-                </span>
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="text" name="searchText" placeholder="Search courses...">
+                    <span class="c-search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </form>
+                
             </div>
 
             <div class="filter-group">
