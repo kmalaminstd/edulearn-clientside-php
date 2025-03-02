@@ -1,6 +1,6 @@
 <?php
 
-    require "./functions/env.php";
+    require './functions/env.php';
 
     if(session_status() === PHP_SESSION_NONE){  
         session_name("eduwebclientui_session");
@@ -27,7 +27,7 @@
         $resp = curl_exec($curl);
         $data = json_decode($resp, true);
 
-        // var_dump($data);
+        // print_r($data);
 
         curl_close($curl);
 

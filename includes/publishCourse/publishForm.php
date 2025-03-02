@@ -1,6 +1,6 @@
 <?php
 
-    require './functions/publishcourse/categoryList.php';
+    require './functions/categoriyList.php';
 
 
 ?>
@@ -30,7 +30,7 @@
                             <label for="course-category">Category</label>
                             <select name="category" id="course-category" required>
                                 <option value='' disabled selected>Select category</option>
-                                <?php
+                                <?php 
 
 
                                 // print_r($category);

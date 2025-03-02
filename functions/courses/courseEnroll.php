@@ -8,47 +8,57 @@
 
     require "../../functions/env.php"; 
 
-    $url = $SELF_API_BASE_URL . "enroll-course.php"; 
-
-    if(isset($_POST['course_enroll_btn'])){
-
-        try{
-            
-            $course_id = json_decode($_POST['course_id']);
-
-            if(!$course_id){
-                throw new Error('Course id is invalid');
-            }
-
-            // echo $course_id;
     
-            $curl = curl_init();
-            curl_setopt_array($curl, [
-                CURLOPT_URL => $url,
-                CURLOPT_POST => true,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_POSTFIELDS => ['course_id' => $course_id], 
-                CURLOPT_HTTPHEADER => [
-                    'Authorization: Bearer ' . $_SESSION['token'],
-                    'student_id: ' . $_SESSION['user_id']
-                ],
+
+    function enroll_course(){
+
+        global $SELF_API_BASE_URL;
+
+        $url = $SELF_API_BASE_URL . "enroll-course.php";
+
+        if(isset($_POST['course_enroll_btn'])){
+
+            try{
                 
-            ]);
-    
-            $resp = curl_exec($curl);
-            $decoded = json_decode($resp, true);
+                $course_id = json_decode($_POST['course_id']);
 
-            print_r($resp);
+                if(!$course_id){
+                    throw new Error('Course id is invalid');
+                }
 
-            curl_close($curl);
+                // echo $course_id;
+        
+                $curl = curl_init();
+                curl_setopt_array($curl, [
+                    CURLOPT_URL => $url,
+                    CURLOPT_POST => true, 
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_POSTFIELDS => ['course_id' => $course_id], 
+                    CURLOPT_HTTPHEADER => [
+                        'Authorization: Bearer ' . $_SESSION['token'],
+                        'student_id: ' . $_SESSION['user_id']
+                    ],
+                    
+                ]);
+        
+                $resp = curl_exec($curl);
+                $decoded = json_decode($resp, true);
 
-            header('Location: ../../student-profile.php');
+                print_r($resp);
 
-    
-        }catch(Exception $e){
-            echo $e;
+                curl_close($curl);
+
+                header('Location: ../../student-profile.php');
+
+        
+            }catch(Exception $e){
+                echo $e;
+            }
         }
+
     }
+
+    
 
 
 

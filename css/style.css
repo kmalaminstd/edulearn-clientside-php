@@ -2125,3 +2125,201 @@ video {
 }
 
 /* search page css end */
+
+/* payment success css start */
+
+.ps-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #f8fafc;
+}
+
+.ps-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 65px;
+}
+
+.ps-success-icon {
+    font-size: 4rem;
+    color: #22c55e;
+    margin-bottom: 1.5rem;
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ps-header {
+    margin-bottom: 2rem;
+}
+
+.ps-header h1 {
+    color: var(--dark);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.ps-header p {
+    color: #64748b;
+}
+
+.ps-course-info {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.ps-course-thumb {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.ps-course-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.ps-details h2 {
+    color: var(--dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.ps-instructor {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.ps-purchase-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ps-amount {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.ps-date {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.ps-next-steps {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.ps-next-steps h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.ps-next-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ps-next-steps li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.ps-next-steps i {
+    color: var(--primary);
+}
+
+.ps-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.ps-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.ps-btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.ps-btn-primary:hover {
+    background: var(--secondary);
+}
+
+.ps-btn-secondary {
+    background: #e2e8f0;
+    color: #64748b;
+}
+
+.ps-btn-secondary:hover {
+    background: #cbd5e1;
+}
+
+@media (max-width: 640px) {
+    .ps-container {
+        padding: 1rem;
+    }
+
+    .ps-card {
+        padding: 1.5rem;
+    }
+
+    .ps-course-info {
+        flex-direction: column;
+    }
+
+    .ps-course-thumb {
+        width: 100%;
+        height: 200px;
+    }
+
+    .ps-actions {
+        flex-direction: column;
+    }
+
+    .ps-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* payment-success css end */

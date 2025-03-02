@@ -17,6 +17,8 @@
 
         $category = $decoded->data->data;
 
+        print_r($category);
+
         curl_close($curl);
 
     }catch(Exception $e){

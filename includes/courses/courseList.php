@@ -38,17 +38,17 @@
                                 <div class='course-thumbnail'>
                                     <img src='{$elm['thumbnail_url']}'>
                                     
-                                    <span class='course-badge free'> <del>$ {$elm['price']}</del>  </span>
+                                    <span class='course-badge free'> $ {$elm['price']}  </span>
                                     
                                 </div>
                                 <div class='course-content'>
                                     <h3>{$elm['title']}</h3>
                                     <p class='instructor'>By {$elm['username']}</p>
                                     <div class='course-meta'>
-                                        <span><i class='fas fa-user'></i> 12k students</span>
+                                        <span><i class='fas fa-user'></i> {$elm['total_student']} students</span>
                                     </div>
                                     <p class='course-published-date'>Published : {$dateString->format('M d, Y')}</p>
-                                    <form method='POST' action='./functions/courses/courseEnroll.php'>
+                                    <form method='POST' action='./functions/courses/verifyCoursePrice.php'>
                                         <input name='course_id' value='{$elm['course_id']}' hidden>
                                         <button name='course_enroll_btn'  type='submit' class='enroll-btn'>Enroll Now</button>
                                     </form>

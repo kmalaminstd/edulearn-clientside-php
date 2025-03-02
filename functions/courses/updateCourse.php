@@ -47,6 +47,8 @@
 
         // var_dump($updateRes);
 
+        print_r($updateRes);
+
         curl_close($curl);
 
         header('Location: ../../teacher-profile.php');
